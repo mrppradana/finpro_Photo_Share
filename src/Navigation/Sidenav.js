@@ -1,7 +1,7 @@
 import React from "react";
 import "./Sidebar.css";
 import HomeIcon from "@mui/icons-material/Home";
-import SearchIcon from "@mui/icons-material/Search";
+import LogoutIcon from '@mui/icons-material/Logout';
 import ExploreIcon from "@mui/icons-material/Explore";
 import ChatIcon from "@mui/icons-material/Chat";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -57,8 +57,8 @@ function Sidenav() {
       </div>
       <div className="sidenav__more">
         <button className="sidenav__button">
-          <MenuIcon />
-          <span>Add More</span>
+          <LogoutIcon />
+          <span>Log Out</span>
         </button>
       </div>
     </div>
