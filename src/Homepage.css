@@ -5,6 +5,7 @@
 
 .homepage__nav{
   flex: 0.2;
+  border: solid darkgrey;
 }
 
 .homepage__timeline{
