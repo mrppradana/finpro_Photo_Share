@@ -1,102 +1,99 @@
-import { useState } from "react";
-import { apiPhoto } from "../src/API/api";
-import { Password } from "@mui/icons-material";
 import './Login.css';
-
+import { useState } from 'react';
+import axios from 'axios';
 
 function Register() {
-  // menyimpan data form yg lagi diketik
+  const [name, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordRepeat, setPasswordRepeat] = useState("");
+  const [profilePictureUrl, setProfilePictureUrl] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [bio, setBio] = useState("");
+  const [website, setWebsite] = useState("");
 
-  async function handleLogin(event) {
+  async function handleRegister(event) {
     event.preventDefault();
-    
-    apiPhoto.post('/api/v1/login', { email: username, password: password })
-    .then((response) => {
-      localStorage.setItem('token', response.data.token);
-      window.location.href = '/'; // redirect
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 
+    const data = {
+      name,
+      username,
+      email,
+      password,
+      passwordRepeat,
+      profilePictureUrl,
+      phoneNumber,
+      bio,
+      website
+    };
+
+    const config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: '{{BASE_URL}}/api/v1/register', // Ganti dengan URL base yang sesuai
+      headers: {
+        'apiKey': '{{API_KEY}}' // Ganti dengan kunci API yang sesuai
+      },
+      data: data
+    };
+
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        window.location.href = '/';
+        // Lakukan tindakan setelah berhasil mendaftar
+      })
+      .catch((error) => {
+        console.log(error);
+        // Tangani kesalahan yang terjadi saat pendaftaran
+      });
   }
 
   return (
-    <>
-      {/* <div className="modal fade" id="modalLogin" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="card login-form">
-              <div className="card-body">
-                <h1 className="card-title text-center">LOGIN</h1>
-              </div>
-              <div className="card-text">
-                <form>
-                  <div className="mb-3">
-                    <label htmlFor="exampleInputUsername1" className="form-label">
-                      Username
-                    </label>
-                    <input 
-                    type="text" 
-                    value={username} 
-                    onChange={(e) => setUsername(e.target.value)} 
-                    className="form-control" 
-                    id="exampleInputUsername1" 
-                    aria-describedby="usernameHelp" />
-                  </div>
-                  <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">
-                      Password
-                    </label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-control" id="exampleInputPassword1" />
-                  </div>
-                  <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                    <label className="form-check-label" htmlFor="exampleCheck1">
-                      Check me out
-                    </label>
-                  </div>
-                  <div className="d-grid gap-2">
-                    <button onClick={(e) => handleLogin(e)} type="submit" className="btn btn-primary">
-                      Submit
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+    <div className="wrapper">
+       <div className="card">
+          <h2>Register</h2>
+          <form  className="form">
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Name"
+              className="control"
+            />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              className="control"
+            />
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              className="control"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              className="control"
+            />
+            <input
+              type="password"
+              value={passwordRepeat}
+              onChange={(e) => setPasswordRepeat(e.target.value)}
+              placeholder="Repeat Password"
+              className="control"
+            />
+            <button type="submit" className="control" onSubmit={handleRegister} >Register</button>
+          </form>
         </div>
-      </div> */}
-  <div className="wrapper">
-    <div className="card">
-      <img src='' />
-      <h2>Login</h2>
-      <form className="form">
-      <input
-        type="text" 
-        value={username} 
-         onChange={(e) => setUsername(e.target.value)} 
-          name="Email"
-          spellCheck="false"
-          className="control"
-          placeholder="Email"
-        />
-        <input
-          type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-          name="password"
-          spellCheck="false"
-          className="control"
-          placeholder="Password"
-        />
-        <button onClick={(e) => handleLogin(e)}  className="control" type="button" >
-          Login
-        </button>
-      </form>
     </div>
-  </div>
-    </>
   );
 }
 

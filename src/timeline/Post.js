@@ -6,6 +6,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import CommentSection from "./CommentSection";
 
 function Post({ user, likes, postImage}) {
   return (
@@ -34,6 +35,7 @@ function Post({ user, likes, postImage}) {
         </div>
         Liked by {likes} people
       </div>
+      <CommentSection/>
     </div>
   );
 }
