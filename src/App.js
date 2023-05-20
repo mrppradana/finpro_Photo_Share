@@ -1,6 +1,7 @@
 import Hompage from './Hompage';
 import './App.css';
 import Login from './Login';
+import Register from './Register';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>,
+  },
+  {
+    path: "/register",
+    element: <Register/>,
   },
 ]);
 

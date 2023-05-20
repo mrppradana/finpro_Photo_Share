@@ -4,7 +4,7 @@ import { Password } from "@mui/icons-material";
 import './Login.css';
 
 
-function Login() {
+function Register() {
   // menyimpan data form yg lagi diketik
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -100,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
