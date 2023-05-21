@@ -6,9 +6,7 @@ import ExploreIcon from '@mui/icons-material/Explore';
 import ChatIcon from '@mui/icons-material/Chat';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { apiPhoto } from '../API/api';
-import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   async function handleLogout(event) {
@@ -73,11 +71,6 @@ const Sidebar = () => {
     //   </div>
     // </div>
 		<div className="sidenav">
-		<img
-			className="sidenav__logo"
-			src="https://www.pngkey.com/png/full/828-8286178_mackeys-work-needs-no-elaborate-presentation-or-distracting.png"
-			alt="Instagram Logo"
-		/>
 		<div className="sidenav__buttons">
 			<button className="sidenav__button">
 				<HomeIcon />
@@ -101,7 +94,7 @@ const Sidebar = () => {
 			</button>
 		</div>
 		<div className="sidenav__more">
-			<button className="sidenav__button">
+			<button className="sidenav__button" onClick={handleLogout} >
 				<LogoutIcon />
 				<span className="sidenav__buttonText">Log Out</span>
 			</button>
