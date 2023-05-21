@@ -2,7 +2,6 @@ import Hompage from './Hompage';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
-import Profile from './Profile/Profile';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -30,10 +29,6 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>,
-  },
-  {
-    path: "/profile",
-    element: mustLogin(<Profile/>),
   },
 ]);
 
