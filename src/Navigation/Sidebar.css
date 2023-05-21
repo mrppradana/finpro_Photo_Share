@@ -46,3 +46,28 @@
   position: fixed;
   bottom: 3px;
 }
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .sidenav__buttons {
+    flex-direction: column;
+  }
+
+  .sidenav__button {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .sidenav__logo {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+}

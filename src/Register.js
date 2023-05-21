@@ -1,6 +1,7 @@
-import './Login.css';
-import { useState } from 'react';
-import axios from 'axios';
+import { useState } from "react";
+import { apiPhoto } from "../src/API/api";
+import { Link } from "react-router-dom";
+import "./Login.css";
 
 function Register() {
   const [name, setName] = useState("");
@@ -17,83 +18,137 @@ function Register() {
     event.preventDefault();
 
     const data = {
-      name,
-      username,
-      email,
-      password,
-      passwordRepeat,
-      profilePictureUrl,
-      phoneNumber,
-      bio,
-      website
+      name: name,
+      username: username,
+      email: email,
+      password: password,
+      passwordRepeat: passwordRepeat,
+      profilePictureUrl: profilePictureUrl,
+      phoneNumber: phoneNumber,
+      bio: bio,
+      website: website,
     };
 
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: '{{BASE_URL}}/api/v1/register', // Ganti dengan URL base yang sesuai
-      headers: {
-        'apiKey': '{{API_KEY}}' // Ganti dengan kunci API yang sesuai
-      },
-      data: data
-    };
-
-    axios.request(config)
+    apiPhoto
+      .post("/api/v1/register", data)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
-        window.location.href = '/';
-        // Lakukan tindakan setelah berhasil mendaftar
+        console.log(response.data);
+        localStorage.setItem("token", response.data.token);
+        window.location.href = "/"; // redirect
+        // Handle successful registration here
       })
       .catch((error) => {
         console.log(error);
-        // Tangani kesalahan yang terjadi saat pendaftaran
+        // Handle registration error here
       });
   }
 
   return (
-    <div className="wrapper">
-       <div className="card">
+    <>
+      <div className="wrapper">
+        <div className="card">
+          <img src="" alt="logo" />
           <h2>Register</h2>
-          <form  className="form">
+          <form className="form">
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
+              name="name"
+              spellCheck="false"
               className="control"
+              placeholder="Name"
             />
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
+              name="username"
+              spellCheck="false"
               className="control"
+              placeholder="Username"
             />
             <input
-              type="email"
+              type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
+              name="email"
+              spellCheck="false"
               className="control"
+              placeholder="Email"
             />
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
+              name="password"
+              spellCheck="false"
               className="control"
+              placeholder="Password"
             />
             <input
               type="password"
               value={passwordRepeat}
               onChange={(e) => setPasswordRepeat(e.target.value)}
-              placeholder="Repeat Password"
+              name="passwordRepeat"
+              spellCheck="false"
               className="control"
+              placeholder="Repeat Password"
             />
-            <button type="submit" className="control" onSubmit={handleRegister} >Register</button>
+            <input
+              type="text"
+              value={profilePictureUrl}
+              onChange={(e) => setProfilePictureUrl(e.target.value)}
+              name="profilePictureUrl"
+              spellCheck="false"
+              className="control"
+              placeholder="Profile Picture URL"
+            />
+            <input
+              type="text"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              name="phoneNumber"
+              spellCheck="false"
+              className="control"
+              placeholder="Phone Number"
+            />
+            <input
+              type="text"
+              value={bio}
+              onChange={(e) => setBio(e.target.value)}
+              name="bio"
+              spellCheck="false"
+              className="control"
+              placeholder="Bio"
+            />
+            <input
+              type="text"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              name="website"
+              spellCheck="false"
+              className="control"
+              placeholder="Website"
+            />
+            <button
+              onClick={(e) => handleRegister(e)}
+              className="control"
+              type="button"
+            >
+              Register
+            </button>
+            <h2>Already have an account?</h2>
+            <button className="control">
+            <Link to="/login" >
+              Login
+            </Link>
+            </button>
+
           </form>
         </div>
-    </div>
+      </div>
+    </>
   );
 }
 

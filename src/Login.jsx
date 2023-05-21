@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { apiPhoto } from "../src/API/api";
-import { Password } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -55,8 +55,11 @@ function Login() {
               Login
             </button>
             <h2>Don't Have an Account?</h2>
-            <button onClick={() => (window.location.href = "/register")}  className="control">
-              Sign Up
+            <button className="control">
+            <Link to="/register">
+              Register
+            </Link>
+           
             </button>
           </form>
         </div>
