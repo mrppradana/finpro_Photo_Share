@@ -1,64 +1,31 @@
-import React from 'react'
-import './Sugesstion.css'
-import { Avatar } from '@mui/material'
+import { Avatar } from "@mui/material";
+import React from "react";
+import "./Sugesstion.css";
 
-function Sugesstion() {
+
+function Suggestions({ user, profilePictureUrl, }) {
   return (
-    <div className='sugesstion'>
-      <div className='sugesstion__title'> Following</div>
-      <div className='sugesstion__usernames'>
-        {/*  */}
-          <div className='sugesstion__username'>
-            <div className='username_left'>
-              <span className='avatar'>
-                <Avatar>r</Avatar>
-              </span>
-              <div className='username__info'>
-                <span className='username'>Test1</span>
-              </div>
+    <div className="suggestions">
+      <div className="suggestions__usernames">
+        <div className="suggestions__username">
+          <div className="username__left">
+            <span className="avatar">
+            {profilePictureUrl ? (
+              <Avatar src={profilePictureUrl} alt="profile" />
+            ) : (
+              <Avatar alt="profile" />
+            )}
+            </span>
+            <div className="username__info">
+              <span className="username">{user}</span>
+              <span className="relation">New to Instagram</span>
             </div>
-          <button className='follow_button'>Follow</button>
           </div>
-        {/*  */}
-        <div className='sugesstion__username'>
-            <div className='username_left'>
-              <span className='avatar'>
-                <Avatar>r</Avatar>
-              </span>
-              <div className='username__info'>
-                <span className='username'>Test1</span>
-              </div>
-            </div>
-          <button className='follow_button'>Follow</button>
-          </div>
-          {/*  */}
-          <div className='sugesstion__username'>
-            <div className='username_left'>
-              <span className='avatar'>
-                <Avatar>r</Avatar>
-              </span>
-              <div className='username__info'>
-                <span className='username'>Test1</span>
-              </div>
-            </div>
-          <button className='follow_button'>Follow</button>
-          </div>
-          {/*  */}
-          <div className='sugesstion__username'>
-            <div className='username_left'>
-              <span className='avatar'>
-                <Avatar>r</Avatar>
-              </span>
-              <div className='username__info'>
-                <span className='username'>Test1</span>
-              </div>
-            </div>
-          <button className='follow_button'>Follow</button>
-          </div>
-          {/*  */}
+          <button className="follow__button">Follow</button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Sugesstion
+export default Suggestions;

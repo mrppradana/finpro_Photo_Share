@@ -47,7 +47,6 @@ function Register() {
     <>
       <div className="wrapper">
         <div className="card">
-          <img src="" alt="logo" />
           <h2>Register</h2>
           <form className="form">
             <input

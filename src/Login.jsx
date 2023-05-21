@@ -26,7 +26,6 @@ function Login() {
     <>
       <div className="wrapper">
         <div className="card">
-          <img src="" />
           <h2>Login</h2>
           <form className="form">
             <input

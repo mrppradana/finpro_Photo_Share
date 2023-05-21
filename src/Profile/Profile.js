@@ -1,46 +1,71 @@
-import React from "react";
-import '../Profile/Profile.css'
+import React, { useEffect, useState } from "react";
+import { Avatar } from "@mui/material";
+import "./Profile.css";
+import { apiPhoto } from "../API/api";
 
-const Profile = () => {
-  const user = {
-    username: "john_doe",
-    name: "John Doe",
-    bio: "Software Engineer | Photographer",
-    followers: 1500,
-    following: 100,
-    posts: 200,
-  };
+function Profile() {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    // Fetch user data from API
+    apiPhoto
+      .get("/api/v1/user", )
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
+
+  const {
+    username,
+    name,
+    email,
+    profilePictureUrl,
+    phoneNumber,
+    bio,
+    website,
+    totalFollowing,
+    totalFollowers,
+  } = userData;
 
   return (
-    <div className="profile-container">
-      <div className="profile-header">
-        <img
-          src="https://example.com/profile-picture.jpg"
-          alt="Profile Picture"
-          className="profile-picture"
-        />
-        <div className="profile-info">
-          <h2 className="username">{user.username}</h2>
-          <h3 className="name">{user.name}</h3>
-          <p className="bio">{user.bio}</p>
+    <div className="profile">
+      <div className="profile__header">
+        <div className="profile__avatarContainer">
+          {profilePictureUrl ? (
+            <Avatar src={profilePictureUrl} alt="profile" />
+          ) : (
+            <Avatar alt="profile" />
+          )}
+        </div>
+        <div className="profile__headerInfo">
+          <h2>{username}</h2>
+          <div className="profile__stats">
+            <div>
+              <span>{totalFollowers}</span> followers
+            </div>
+            <div>
+              <span>{totalFollowing}</span> following
+            </div>
+          </div>
+          <div className="profile__details">
+            <h3>{name}</h3>
+            <p>{bio}</p>
+            <p>Email: {email}</p>
+            <p>Phone Number: {phoneNumber}</p>
+            <p>Website: {website}</p>
+          </div>
         </div>
       </div>
-      <div className="profile-stats">
-        <div className="stats-item">
-          <span className="stats-count">{user.posts}</span>
-          <span className="stats-label">Posts</span>
-        </div>
-        <div className="stats-item">
-          <span className="stats-count">{user.followers}</span>
-          <span className="stats-label">Followers</span>
-        </div>
-        <div className="stats-item">
-          <span className="stats-count">{user.following}</span>
-          <span className="stats-label">Following</span>
-        </div>
-      </div>
+      {/* Add additional profile sections (e.g., posts, followers, following) */}
     </div>
   );
-};
+}
 
 export default Profile;

@@ -1,6 +1,4 @@
-
-
-.sidenav{
+.sidenav {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -8,32 +6,32 @@
   z-index: 1;
 }
 
-.sidenav__logo{
+.sidenav__logo {
   width: 120px;
-  margin: auto;
+  margin: 25px;
 }
 
-.sidenav__buttons{
+.sidenav__buttons {
   display: flex;
   flex-direction: column;
 }
 
-.sidenav__button{
+.sidenav__button {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: white;
   background: 0;
   border: 0;
-  margin: 5px 15px 10px 15px;
+  margin: 5px 10px 5px 10px;
   padding: 10px 15px 10px 15px;
   border-radius: 15px;
   width: 100%;
 }
 
-.sidenav__button:hover{
+.sidenav__button:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.112);
+  background-color: rgba(255, 255, 255, 0.128);
 }
 
 .sidenav__button > span {
@@ -42,32 +40,22 @@
   margin-left: 10px;
 }
 
-.sidenav__more{
+.sidenav__more {
   position: fixed;
   bottom: 3px;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .sidenav {
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-  }
-
-  .sidenav__buttons {
-    flex-direction: column;
-  }
-
-  .sidenav__button {
-    margin-bottom: 10px;
-  }
+.logout__button {
+  font-size: 15px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.211);
+  border: 0;
+  padding: 10px;
 }
 
-@media screen and (max-width: 480px) {
-  .sidenav__logo {
-    max-width: 80%;
-    margin: 0 auto;
-  }
+.logout__button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.424);
 }
