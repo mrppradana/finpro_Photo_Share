@@ -18,7 +18,7 @@ function Suggestions({ user, profilePictureUrl, }) {
             </span>
             <div className="username__info">
               <span className="username">{user}</span>
-              <span className="relation">New to Instagram</span>
+              <span className="relation">New to PhotoShare</span>
             </div>
           </div>
           <button className="follow__button">Follow</button>
