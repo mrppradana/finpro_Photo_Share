@@ -16,21 +16,8 @@ function Register() {
 
   async function handleRegister(event) {
     event.preventDefault();
-
-    const data = {
-      name: name,
-      username: username,
-      email: email,
-      password: password,
-      passwordRepeat: passwordRepeat,
-      profilePictureUrl: profilePictureUrl,
-      phoneNumber: phoneNumber,
-      bio: bio,
-      website: website,
-    };
-
     apiPhoto
-      .post("/api/v1/register", data)
+      .post("/api/v1/register", { name: name, username: username, email: email, password: password, passwordRepeat: passwordRepeat, profilePictureUrl: profilePictureUrl, phoneNumber: phoneNumber, bio: bio, website: website })
       .then((response) => {
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
