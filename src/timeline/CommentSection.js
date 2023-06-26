@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./addComment"
 import './CommentSection.css';
+import { AddComment } from '@mui/icons-material';
 
 
 const CommentSection = () => {
@@ -64,14 +66,8 @@ const CommentSection = () => {
           </div>
         ))}
       </div>
-      <div className="add-comment">
-        <input
-          type="text"
-          value={commentText}
-          onChange={(e) => setCommentText(e.target.value)}
-          placeholder="Add a comment..."
-        />
-        <button onClick={handleAddComment}>Post</button>
+      <div>
+        < AddComment />
       </div>
     </div>
   );
