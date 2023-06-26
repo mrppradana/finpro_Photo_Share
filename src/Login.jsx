@@ -26,7 +26,7 @@ function Login() {
     <>
       <div className="wrapper">
         <div className="card">
-          <h2>Masuk</h2>
+          <h2>Login</h2>
           <form className="form">
             <input
               type="text"
